@@ -4,7 +4,7 @@ require __DIR__ . "/../vendor/autoload.php";
 
 use Scort\Lunar\Lunar;
 
-// 农历类
+// 农历转换类
 $lunar = new Lunar();
 
 // 今天日期

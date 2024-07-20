@@ -10,6 +10,9 @@
 require __DIR__ . "/../vendor/autoload.php";
 
 use Scort\Lunar\Lunar;
+
+// 农历转换类
+$lunar = new Lunar();
 ```
 
 1. 公历转农历，公历范围(1891-02-09 ~ 2100-12-31)
