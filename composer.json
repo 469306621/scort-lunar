@@ -1,0 +1,20 @@
+{
+    "name": "scort/lunar",
+    "description": "中国农历与公历互转，支持范围（1891 ~ 2100）共计210年内的农历与公历互转",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Scort\\Lunar\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "469306621",
+            "email": "469306621@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    }
+}
