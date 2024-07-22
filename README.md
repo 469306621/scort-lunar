@@ -1,21 +1,35 @@
-[中国农历组件]
+# 中国农历组件
+
+#### [中文版 ReadMe](README.md) | [English ReadMe](README.en.md)
+
 本组件提供了中国（1891年 - 2100年）的公历与农历互转功能，遵循PSR-4：
- - [公历转农历，公历范围(1891-02-09 ~ 2100-12-31)](#1-公历转农历公历范围1891-02-09--2100-12-31)
- - [农历转公历，农历范围(1891-1-1 ~ 2100-12-29)](#2-农历转公历农历范围1891-1-1--2100-12-29)
- - 其它功能陆续集成中
 
-### 示例：
+- [公历转农历，公历范围(1891-02-09 ~ 2100-12-31)](#1-公历转农历公历范围1891-02-09--2100-12-31)
+- [农历转公历，农历范围(1891-1-1 ~ 2100-12-29)](#2-农历转公历农历范围1891-1-1--2100-12-29)
+- [获取指定农历年的闰月](#3-获取指定农历年的闰月结果0代表指定年没有闰月112代表具体的闰月数)
+- [公历年闰年判断](#4-公历年闰年判断)
+- [获取农历年生肖](#5-获取农历年生肖)
+- 其它功能陆续集成中
+
+### 安装
+
+在项目根目录下，使用`composer`安装本组件：
+
+```composer
+composer require scort/lunar
+```
+
+### 在你的项目中使用
 ```php
-
-require __DIR__ . "/../vendor/autoload.php";
-
+// 引入
 use Scort\Lunar\Lunar;
 
 // 农历转换类
 $lunar = new Lunar();
 ```
 
-### 1. 公历转农历，公历范围(1891-02-09 ~ 2100-12-31)
+### 1. 公历转农历，`公历范围(1891-02-09 ~ 2100-12-31)`
+
 ```php
 /**
  * 公历转农历，公历范围(1891-02-09 ~ 2100-12-31)
@@ -29,7 +43,9 @@ $date = explode("-", $date);
 $todayLunar = $lunar->solarToLunar(...$date);
 var_dump($todayLunar);
 ```
+
 结果：
+
 ```
 array(2) {
   ["status"]=> int(200)
@@ -62,7 +78,8 @@ array(2) {
  * msg: 错误原因
 ```
 
-### 2. 农历转公历，农历范围(1891-1-1 ~ 2100-12-29)
+### 2. 农历转公历，`农历范围(1891-1-1 ~ 2100-12-29)`
+
 ```php
 /**
  * 将农历转换为公历，农历范围(1891-1-1 ~ 2100-12-29)
@@ -79,6 +96,7 @@ var_dump($lunar->lunarToSolar($todayLunar[0], $todayLunar[4], $todayLunar[5]));
 ```
 
 结果：
+
 ```
 array(2) {
   ["status"]=> int(200)
@@ -99,4 +117,34 @@ array(2) {
  当status非200时，没有data，只有msg来描述错误信息
  * status: 非200
  * msg: 错误原因
+```
+
+### 3. 获取指定农历年的闰月，结果：`0`：代表指定年没有闰月；`1~12`：代表具体的闰月数
+```php
+// 获取2024年的闰月
+$leapMonth_2024 = $lunar->getLeapMonth(2024);
+// 获取2025年的闰月
+$leapMonth_2025 = $lunar->getLeapMonth(2025);
+var_dump(
+    $leapMonth_2024, // int 0
+    $leapMonth_2025  // int 6
+);
+```
+
+### 4. 公历年闰年判断
+```php
+$isLeapYear_2024 = $lunar->isLeapYear(2024);
+$isLeapYear_2025 = $lunar->isLeapYear(2025);
+var_dump(
+    $isLeapYear_2024, // bool true
+    $isLeapYear_2025  // bool false
+);
+```
+
+### 5. 获取农历年生肖
+```php
+$lunarYearZodiacName = $lunar->getLunarYearZodiacName(2024);
+var_dump(
+    $lunarYearZodiacName // string  "龙"
+);
 ```

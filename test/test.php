@@ -51,3 +51,27 @@ if ($todayLunar['status'] === 200) [$lunarYear, , , , $lunarMonth, $lunarDay] = 
  * @param $date :农历-日
  */
 var_dump($lunar->lunarToSolar($lunarYear, $lunarMonth, $lunarDay));
+
+// 3. 在农历中，获取指定年的闰月。结果：0：代表指定年没有闰月；1~12：代表具体的闰月数
+// 获取2024年的闰月
+$leapMonth_2024 = $lunar->getLeapMonth(2024);
+// 获取2025年的闰月
+$leapMonth_2025 = $lunar->getLeapMonth(2025);
+var_dump(
+    $leapMonth_2024, // int 0
+    $leapMonth_2025  // int 6
+);
+
+// 4. 闰年判断
+$isLeapYear_2024 = $lunar->isLeapYear(2024);
+$isLeapYear_2025 = $lunar->isLeapYear(2025);
+var_dump(
+    $isLeapYear_2024, // bool true
+    $isLeapYear_2025  // bool false
+);
+
+// 5. 获取农历年生肖
+$lunarYearZodiacName = $lunar->getLunarYearZodiacName(2024);
+var_dump(
+    $lunarYearZodiacName // string  "龙"
+);

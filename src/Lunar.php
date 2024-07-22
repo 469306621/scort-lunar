@@ -272,9 +272,9 @@ class Lunar
      *
      * @return int
      */
-    private function getLeapMonth(int $year): int
+    public function getLeapMonth(int $year): int
     {
-        return self::$config[$year][0] ?? 0;
+        return self::$config[$year][0] ?? -1;
     }
 
     /**
@@ -314,35 +314,51 @@ class Lunar
     }
 
     /**
+     * 12个月数字的农历名称
+     */
+    const LUNAR_MONTH_NAMES = ['正月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '冬月', '腊月'];
+
+    /**
      * 获取月数字的农历叫法
      * 比如：12 -> 腊月
      *
-     * @param $num string|int 月份的数字
+     * @param $month int 月份的数字
      * @return string
      */
-    public function getLunarMonthName(int $num): string
+    public function getLunarMonthName(int $month): string
     {
-        $data = ['正月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '冬月', '腊月'];
-        return $data[$num - 1] ?? '';
+        return self::LUNAR_MONTH_NAMES[$month - 1] ?? '';
     }
+
+    /**
+     * 30个日数字的农历叫法
+     */
+    const LUNAR_DAY_NAMES = [
+        '初一', '初二', '初三', '初四', '初五', '初六', '初七', '初八', '初九', '初十',
+        '十一', '十二', '十三', '十四', '十五', '十六', '十七', '十八', '十九', '二十',
+        '廿一', '廿二', '廿三', '廿四', '廿五', '廿六', '廿七', '廿八', '廿九', '三十'
+    ];
 
     /**
      * 获取日数字的农历叫法
      * 比如：1 -> 初一
      *
-     * @param $num :数字
+     * @param $day :数字
      * @return string
      */
-    public function getLunarDayName(int $num): string
+    public function getLunarDayName(int $day): string
     {
-        $data = [
-            '初一', '初二', '初三', '初四', '初五', '初六', '初七', '初八', '初九', '初十',
-            '十一', '十二', '十三', '十四', '十五', '十六', '十七', '十八', '十九', '二十',
-            '廿一', '廿二', '廿三', '廿四', '廿五', '廿六', '廿七', '廿八', '廿九', '三十'
-        ];
-        return $data[$num - 1] ?? '';
+        return self::LUNAR_DAY_NAMES[$day - 1] ?? '';
     }
 
+    /**
+     * 农历天干
+     */
+    const LUNAR_SKY_NAMES = ['庚', '辛', '壬', '癸', '甲', '乙', '丙', '丁', '戊', '己'];
+    /**
+     * 农历地支
+     */
+    const LUNAR_EARTH_NAMES = ['申', '酉', '戌', '亥', '子', '丑', '寅', '卯', '辰', '巳', '午', '未'];
 
     /**
      * 获取干支纪年
@@ -352,10 +368,13 @@ class Lunar
      */
     public function getLunarYearName(int $year): string
     {
-        $sky = ['庚', '辛', '壬', '癸', '甲', '乙', '丙', '丁', '戊', '己'];
-        $earth = ['申', '酉', '戌', '亥', '子', '丑', '寅', '卯', '辰', '巳', '午', '未'];
-        return $sky[((string)$year)[3]] . $earth[$year % 12];
+        return self::LUNAR_SKY_NAMES[((string)$year)[3]] . self::LUNAR_EARTH_NAMES[$year % 12];
     }
+
+    /**
+     * 农历年生肖
+     */
+    const LUNAR_YEAR_ZODIAC_NAMES = ['猴', '鸡', '狗', '猪', '鼠', '牛', '虎', '兔', '龙', '蛇', '马', '羊'];
 
     /**
      * 根据农历年获取生肖
@@ -364,8 +383,7 @@ class Lunar
      */
     public function getLunarYearZodiacName(int $year): string
     {
-        $data = ['猴', '鸡', '狗', '猪', '鼠', '牛', '虎', '兔', '龙', '蛇', '马', '羊'];
-        return $data[$year % 12] ?? '';
+        return self::LUNAR_YEAR_ZODIAC_NAMES[$year % 12] ?? '';
     }
 
 }
