@@ -1,8 +1,9 @@
 # Chinese Lunar Calendar Component
+# [中国农历组件](README.md)
 
 #### [中文版 ReadMe](README.md) | [English ReadMe](README.en.md)
 
-This component provides functionality for converting between the Gregorian and Lunar calendars in China (from 1891 to 2100), following PSR-4:
+This component provides functionality for converting between the Gregorian and Lunar calendars in China (from 1891 to 2100):
 
 - [Gregorian to Lunar, Gregorian range (1891-02-09 ~ 2100-12-31)](#1-gregorian-to-lunar-gregorian-range-1891-02-09--2100-12-31)
 - [Lunar to Gregorian, Lunar range (1891-1-1 ~ 2100-12-29)](#2-lunar-to-gregorian-lunar-range-1891-1-1--2100-12-29)
