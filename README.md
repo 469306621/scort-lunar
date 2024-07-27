@@ -1,5 +1,5 @@
 # 中国农历组件
-# [Chinese Lunar Calendar Component](README.en.md)
+## [Chinese Lunar Calendar Component](README.en.md)
 
 #### [中文版 ReadMe](README.md) | [English ReadMe](README.en.md)
 
