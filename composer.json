@@ -1,6 +1,7 @@
 {
     "name": "scort/lunar",
-    "description": "中国农历与公历互转，支持范围（1891 ~ 2100）共计210年内的农历与公历互转",
+    "description": "中国农历与公历互转，支持范围（1891 ~ 2100）共计210年内的农历与公历互转\nThis component provides functionality for converting between the Gregorian and Lunar calendars in China (from 1891 to 2100)",
+    "keywords": ["中国农历","中国农历与公历互转","农历与公历互转", "lunar", "chinese lunar", "Lunar calendars", "converting between the Gregorian and Lunar calendars in China"],
     "type": "library",
     "license": "MIT",
     "autoload": {
